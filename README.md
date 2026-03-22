@@ -10,7 +10,7 @@
 <br/>
 
 **Developed Under:** [Infosys Springboard Internship](#)  
-**Author:** Tanishq Chauhan  
+**Made By:** Tanishq Chauhan  
 
 <br/>
 
