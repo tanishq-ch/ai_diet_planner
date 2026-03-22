@@ -1,57 +1,92 @@
+<div align="center">
+
 # 🥗 AI-NutriCare: AI Diet Planner
 
-**Status:** Under Development  
-**Author:** Tanishq Chauhan  
-**Developed Under:** Infosys Springboard Internship  
+[![Status](https://img.shields.io/badge/Status-Under_Development-FF8C00?style=for-the-badge&logo=statuspage)](#)
+[![Python](https://img.shields.io/badge/Python-3.9%2B-blue?style=for-the-badge&logo=python&logoColor=white)](#)
+[![Streamlit](https://img.shields.io/badge/UI-Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](#)
+[![Ollama](https://img.shields.io/badge/AI-Ollama-black?style=for-the-badge&logo=ollama&logoColor=white)](#)
 
----
+<br/>
+
+**Developed Under:** [Infosys Springboard Internship](#)  
+**Author:** Tanishq Chauhan  
+
+<br/>
+
+*An advanced, privacy-first AI/ML-based system designed to analyze medical reports (blood tests, lab reports, and doctor prescriptions) to automatically generate highly personalized dietary plans tailored to an individual's unique health profile.*
+
+</div>
+
+<hr/>
+
+## 📖 Table of Contents
+- [📌 Overview](#-overview)
+- [🎯 Objectives](#-objectives)
+- [✨ Key Features](#-key-features)
+- [🧱 Project Structure](#-project-structure)
+- [🛠️ Technology Stack](#-technology-stack)
+- [🚀 Getting Started](#-getting-started)
+- [💡 How to Use the Project](#-how-to-use-the-project)
+- [🔮 Future Enhancements](#-future-enhancements)
+- [⭐ Support & Acknowledgments](#-support--acknowledgments)
+
+<hr/>
 
 ## 📌 Overview
 
-**AI-NutriCare (AI Diet Planner)** is an advanced, privacy-first AI/ML-based system designed to analyze medical reports—such as blood tests, lab reports, and doctor prescriptions—to automatically generate highly personalized dietary plans tailored to an individual's unique health profile.
+**AI-NutriCare (AI Diet Planner)** bridges the gap between complex medical lab results and actionable daily nutrition. Medical reports are often filled with complex numeric values, jargon, and unstructured notes, making it difficult for average individuals to correlate their lab results with their daily diet. 
 
-Medical reports are often filled with complex numeric values, jargon, and unstructured notes, making it difficult for average individuals to correlate their lab results with their daily diet. AI-NutriCare bridges this gap by combining **Optical Character Recognition (OCR)**, **Local Large Language Models (LLMs)**, and rigorously defined **Rule-Based Nutritional Logic**. This allows the system to extract meaningful metrics (e.g., glucose levels, blood pressure, cholesterol, BMI) and unstructured physician advice directly from uploaded documents, subsequently converting these granular insights into structured, actionable, multi-day meal plans.
+By combining **Optical Character Recognition (OCR)**, **Local Large Language Models (LLMs)**, and rigorously defined **Rule-Based Nutritional Logic**, this system extracts meaningful metrics (e.g., glucose levels, blood pressure, cholesterol, BMI) and unstructured physician advice directly from uploaded documents. These granular insights are then dynamically converted into structured, actionable, and multi-day meal plans.
 
-*This project was conceptualized and developed as part of the **Infosys Springboard Internship**, showcasing the practical application of Machine Learning, OCR, and Generative AI in the Healthcare Domain.*
+> 💡 *This project was conceptualized and developed as part of the **Infosys Springboard Internship**, showcasing the practical application of Machine Learning, OCR, and Generative AI in the Healthcare Domain.*
 
----
+<hr/>
 
 ## 🎯 Objectives
 
-The main objectives of the AI-NutriCare project are:
-1. **Automate Unstructured Medical Data Parsing:** Utilize OCR and localized LLMs to read and interpret unstructured PDF lab reports or scanned prescription images.
-2. **Translate Medical Metrics to Health Risk Assessments:** Map granular laboratory values to identified health risks (e.g., Pre-diabetes, Hypertension, Low Hemoglobin).
-3. **Generate Actionable Dietary Interventions:** Provide users with personalized, AI-generated meal plans that explicitly include recommended foods while excluding contraindicated items based on their detected medical conditions.
-4. **Ensure Data Privacy:** Employ locally-hosted AI inference (via Ollama) ensuring that sensitive medical data and user health metrics never leave the local environment or get transmitted to third-party cloud APIs.
+| Objective | Description |
+| :--- | :--- |
+| **🤖 Automate Parsing** | Utilize OCR and localized LLMs to read and interpret unstructured PDF lab reports or scanned prescription images without manual entry. |
+| **🔍 Risk Assessment** | Map granular laboratory values to identified health risks (e.g., Pre-diabetes, Hypertension, Low Hemoglobin). |
+| **🥗 Actionable Diet** | Provide users with personalized, AI-generated meal plans that explicitly include recommended foods while excluding contraindicated items based on detected conditions. |
+| **🔒 Data Privacy** | Employ locally-hosted AI inference (`Ollama`), ensuring that sensitive medical data and health metrics never leave the local environment or get transmitted to third-party cloud APIs. |
 
----
+<hr/>
 
 ## ✨ Key Features
 
-- **Automated Medical Report Extraction (No Manual Data Entry):**
-  - Direct upload for **PDFs** and Scanned **Images** (JPEG/PNG).
-  - Uses `pdfplumber` and `pytesseract` to scan raw text seamlessly, preserving context and numeric values.
-- **AI-Powered Metrics Parsing & Analysis:**
-  - Instructs local LLMs (via Ollama) to sift through raw lab reports and intelligently extract critical markers (e.g., HbA1c, Fasting Glucose, LDL, HDL, Triglycerides, Hemoglobin, Creatinine).
-  - Automatically captures, interprets, and parses unstructured **Doctor Notes** and advice found at the bottom of prescriptions.
-- **Intelligent Health Risk Assessment:**
-  - Evaluates extracted metrics against established medical thresholds automatically.
-  - Detects complex interacting conditions such as **Type 2 Diabetes, Hypertension, Obesity/Overweight, High Cholesterol, Anemia, Thyroid Disorders, and Kidney Disease**.
-- **Personalized Diet Generation Engine:**
-  - Generates highly specific, safe, multi-tier meal plans (Vegetarian or Non-Vegetarian) completely dynamically.
-  - Automatically calculates basal metabolic rate (BMR) and caloric targets based on age, gender, weight, and detected health goals (e.g., caloric deficit for obesity, glycemic control for diabetes).
-  - Features robust fallback daily meal plans for high resilience during generation phases.
-- **Privacy-First Local Processing:**
-  - Utilizes **Ollama** for running fast, private LLMs (`gemma3:1b`, `qwen2.5:1.5b`, `phi3.5`, etc.) completely offline.
-- **Beautiful, Interactive UI:**
-  - Built with **Streamlit**, featuring a highly customized, responsive, visually appealing, and intuitive interface with informative step-by-step progress tracking.
-- **Export & Download:**
-  - Download structured dietary data as **JSON** for digital records.
-  - Export beautifully formatted, patient-ready **PDF Reports** customized with medical disclaimers using `reportlab`.
+### 📄 Automated Medical Report Extraction
+* **Direct Upload:** Support for **PDFs** and Scanned **Images** (JPEG/PNG).
+* **High-Accuracy Scanning:** Uses `pdfplumber` and `pytesseract` to scan raw text seamlessly, preserving context and numeric values.
 
----
+### 🧠 AI-Powered Metrics Parsing & Analysis
+* **Local LLM Parsing:** Instructs local LLMs (via Ollama) to sift through raw lab reports and intelligently extract critical markers (e.g., HbA1c, Fasting Glucose, LDL, HDL, Triglycerides).
+* **Doctor Notes Extraction:** Automatically captures, interprets, and parses unstructured advice found at the bottom of prescriptions.
 
-## 🧱 Complete Project Structure
+### 🩺 Intelligent Health Risk Assessment
+* Evaluates extracted metrics against established medical thresholds automatically.
+* Detects interacting conditions such as **Type 2 Diabetes, Hypertension, Obesity/Overweight, High Cholesterol, Anemia, Thyroid Disorders, and Kidney Disease**.
+
+### 🍽️ Personalized Diet Generation Engine
+* Generates highly specific, multi-tier meal plans (Vegetarian or Non-Vegetarian).
+* Automatically calculates basal metabolic rate (BMR) and caloric targets based on age, gender, weight, and detected health goals.
+* Features robust fallback daily meal plans for high resilience during generation phases.
+
+### 🎨 Beautiful, Interactive UI
+* Built with **Streamlit**, featuring a highly customized, responsive, visually appealing, and intuitive interface with step-by-step progress tracking.
+
+### 📥 Export & Download
+* Download structured dietary data as **JSON** for digital records.
+* Export beautifully formatted, patient-ready **PDF Reports** customized with medical disclaimers using `reportlab`.
+
+<hr/>
+
+## 🧱 Project Structure
+
+<details>
+<summary><b>Click to expand the Complete Folder Structure</b></summary>
+<br>
 
 ```text
 AI-NutriCare/
@@ -84,57 +119,54 @@ AI-NutriCare/
 ├── requirements.txt                # Python dependencies
 └── README.md                       # Comprehensive Documentation
 ```
+</details>
 
-### Module Breakdown
-- **`diet_plan_module`**: This is the heart of the modern application. It utilizes Streamlit for a web interface (`app2.py`) and offloads complex LLM inference, medical reasoning, and PDF generation to `diet_engine.py`.
-- **`input_handlers` & `parsers`**: These folders form the extraction pipeline that attempts to sanitize chaotic OCR text into clean, tokenizable text before passing it to parsing logic or an LLM.
+<br>
 
----
+### 📦 Module Breakdown
+* **`diet_plan_module`**: This is the heart of the modern application. It utilizes Streamlit for a web interface (`app2.py`) and offloads complex LLM inference, medical reasoning, and PDF generation to `diet_engine.py`.
+* **`input_handlers` & `parsers`**: These folders form the extraction pipeline that attempts to sanitize chaotic OCR text into clean, tokenizable text before passing it to parsing logic or an LLM.
+
+<hr/>
 
 ## 🛠️ Technology Stack
 
-**Frontend & User Interface:**
-- `streamlit`
+<div align="center">
 
-**AI, Machine Learning & NLP:**
-- `ollama` (Local LLM Server handling inference)
-- Open Source LLMs (Gemma3, Qwen2.5, Phi3.5)
-- `pandas`, `numpy` (For dataset analytics and data manipulation)
+| Area | Technologies |
+| :--- | :--- |
+| **Frontend & UI** | ![Streamlit](https://img.shields.io/badge/-Streamlit-FF4B4B?style=flat&logo=streamlit&logoColor=white) |
+| **AI, ML & NLP** | ![Ollama](https://img.shields.io/badge/-Ollama-black?style=flat&logo=ollama&logoColor=white) ![Pandas](https://img.shields.io/badge/-Pandas-150458?style=flat&logo=pandas&logoColor=white) ![NumPy](https://img.shields.io/badge/-NumPy-013243?style=flat&logo=numpy&logoColor=white) <br>(Models: *Gemma3, Qwen2.5, Phi3.5*) |
+| **Document OCR** | `pdfplumber`, `pytesseract`, `pillow`, `opencv-python` |
+| **Export & Generation** | `reportlab`, `json` |
 
-**Document Processing & OCR:**
-- `pdfplumber` (For parsing digital PDFs)
-- `pytesseract` & `pillow` (For Optical Character Recognition on images)
-- `opencv-python` (Image processing enhancements)
+</div>
 
-**Data Export & Report Generation:**
-- `reportlab` (Dynamic PDF assembly)
-- `json`
-
----
+<hr/>
 
 ## 🚀 Getting Started
 
 Follow these steps to set up the project on your local machine. Because this application processes text locally using LLMs, you must install Ollama.
 
-### 1. Prerequisites
+### 1️⃣ Prerequisites
 
 You must have **Ollama** installed on your system to run the local AI models.
-- Download and install Ollama from: [https://ollama.com/](https://ollama.com/)
+* Download and install from: [https://ollama.com/](https://ollama.com/)
 
-Once installed, open a terminal and pull a lightweight, fast model. The system works best with these fast models:
+Once installed, open a terminal and pull a lightweight, fast model:
 ```bash
 ollama pull gemma3:1b
 ollama pull qwen2.5:1.5b
 ```
 
-### 2. Environment Setup
+### 2️⃣ Environment Setup
 
-Make sure you have Python 3.9+ installed. It is highly recommended to use a virtual environment.
+Make sure you have Python 3.9+ installed. Using a virtual environment is highly recommended.
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/AI-NutriCare.git
-cd AI-NutriCare
+git clone https://github.com/tanishq-ch/ai_diet_planner.git
+cd ai_diet_planner
 
 # Create and activate a Virtual Environment (Windows)
 python -m venv venv
@@ -143,10 +175,9 @@ venv\Scripts\activate
 # Install the dependencies
 pip install -r requirements.txt
 ```
+> *(Note: Depending on your system, `pytesseract` may also require you to install Tesseract-OCR software natively on your OS and add it to your system PATH).*
 
-*(Note: Depending on your system, `pytesseract` may also require you to install Tesseract-OCR software natively on your OS and add it to your system PATH).*
-
----
+<hr/>
 
 ## 💡 How to Use the Project
 
@@ -158,35 +189,35 @@ pip install -r requirements.txt
    ```
 
 2. **Configure the AI (Sidebar):**
-   - Use the sidebar to select your preferred Local Model (e.g., `gemma3:1b`).
-   - Click "Test Connection" to ensure the AI bridge is active.
-   - Select the desired Diet Preference (Vegetarian/Non-Vegetarian) and the Plan Duration.
+   * Use the sidebar to select your preferred Local Model (e.g., `gemma3:1b`).
+   * Click **"Test Connection"** to ensure the AI bridge is active.
+   * Select the desired Diet Preference (Vegetarian/Non-Vegetarian) and the Plan Duration.
 
 3. **Step 1: Patient Information:**
-   - Input basic demographics (Name, Age, Gender) used for BMR and caloric calculations.
+   * Input basic demographics (Name, Age, Gender) used for BMR and caloric calculations.
 
 4. **Step 2 & 3: Health Metrics & Doctor Notes:**
-   - **Upload Tab:** Upload a lab report (PDF/Image). The OCR will extract text, and the LLM will parse out the medical values and doctor notes completely automatically.
-   - **Manual Tab:** If you don't have a report, manually enter known values (Fasting Glucose, Blood Pressure, LDL, etc.).
+   * **Upload Tab:** Upload a lab report (PDF/Image). The OCR will extract text, and the LLM will parse out the medical values and doctor notes completely automatically.
+   * **Manual Tab:** If you don't have a report, manually enter known values (Fasting Glucose, Blood Pressure, LDL, etc.).
 
 5. **Step 4: Generate Diet Plan:**
-   - Review the AI-identified conditions (displayed as badges).
-   - Click "Generate Diet Plan". The local LLM will generate daily meals adhering to specific restrictions.
+   * Review the AI-identified conditions (displayed as badges).
+   * Click **"Generate Diet Plan"**. The local LLM will generate daily meals adhering to specific restrictions.
 
 6. **Review & Export:**
-   - View your day-by-day plan directly in the beautiful UI.
-   - Download the raw data via **"Download JSON"** or get a pristine PDF document by clicking **"Generate PDF"**.
+   * View your day-by-day plan directly in the beautiful UI.
+   * Download the raw data via **"Download JSON"** or get a pristine PDF document by clicking **"Generate PDF"**.
 
----
+<hr/>
 
 ## 🔮 Future Enhancements
 
-- **Deep Image-Based Food Recognition:** Integrate computer vision to allow users to take a picture of their meals to retroactively analyze whether they adhered to their generated ML diet plan.
-- **Expanded Nutritional Ontology:** Add deeper integrations with extensive regional recipes mapping out macro and micro-nutrients across hundreds of localized Indian cuisines.
-- **Conversational RAG Chatbot:** Provide the patient with an interactive AI chat window natively within the app, allowing them to ask context-aware questions about the generated diet plan (e.g., "Can I substitute the paneer for tofu?").
-- **Wearable API Integrations:** Connect directly with Google Fit and Apple Health to pull real-time metabolic and activity data to adjust daily caloric targets dynamically.
+* 📷 **Deep Image-Based Food Recognition:** Integrate computer vision to allow users to take a picture of their meals to retroactively analyze whether they adhered to their generated AI diet plan.
+* 🍛 **Expanded Nutritional Ontology:** Add deeper integrations with extensive regional recipes mapping out macro and micro-nutrients across hundreds of localized Indian cuisines.
+* 🤖 **Conversational RAG Chatbot:** Provide the patient with an interactive AI chat window natively within the app, allowing them to ask context-aware questions about the generated diet plan (e.g., *"Can I substitute the paneer for tofu?"*).
+* ⌚ **Wearable API Integrations:** Connect directly with Google Fit and Apple Health to pull real-time metabolic and activity data to adjust daily caloric targets dynamically.
 
----
+<hr/>
 
 ## ⭐ Support & Acknowledgments
 
